@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 34bf333920b9886469ea633c17e22d4d
-timeCreated: 1522460228
-licenseType: Store
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -298,14 +296,16 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tFound
+      duplicate transform 'cave_troll_LArmDigit31' for human bone 'Left Middle Proximal'
+      and 'LeftHand'\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    animationCompression: 0
+    animationCompression: 3
     animationRotationError: 0.05
     animationPositionError: 0.05
     animationScaleError: 0.05
@@ -554,6 +554,8 @@ ModelImporter:
     optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
