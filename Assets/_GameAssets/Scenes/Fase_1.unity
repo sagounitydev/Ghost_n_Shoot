@@ -910,8 +910,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
+  near clip plane: 0.01
+  far clip plane: 1000
   field of view: 50
   orthographic: 0
   orthographic size: 10
@@ -938,7 +938,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 585133841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.491, y: 0.737, z: -2.726}
+  m_LocalPosition: {x: 0.449, y: 0.737, z: -3.035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1957603749}
@@ -2088,17 +2088,18 @@ MonoBehaviour:
     m_Bits: 1
   shoulder: 0
   cameraSettings:
-    camPositionOffsetLeft: {x: 0, y: 0, z: 0}
-    camPositionOffsetRight: {x: 0, y: 0, z: 0}
+    camPositionOffsetLeft: {x: -0.449, y: 0.737, z: -3.035}
+    camPositionOffsetRight: {x: 0.449, y: 0.737, z: -3.035}
     mouseXSensibility: 5
     mouseYSensibility: 5
     minAngle: -30
     maxAngle: 70
     rotationSpeed: 5
+    maxCheckDist: 0.1
     fieldOfView: 70
     zoomFieldOfView: 30
     zoomSpeed: 3
-    hidMeshWhenDistance: 0.5
+    hideMeshWhenDistance: 0.5
   input:
     verticalAxis: Mouse X
     horizontalAxis: Mouse Y
@@ -3304,6 +3305,7 @@ GameObject:
   - component: {fileID: 2007305433}
   - component: {fileID: 2007305432}
   - component: {fileID: 2007305431}
+  - component: {fileID: 2007305436}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3323,10 +3325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e17d59ba39f5e4fb1b85735a379462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
   animations:
-    verticalVelocityFloat: MovY
-    horizontalVelocityFloat: MovX
+    verticalVelocityFloat: Vertical
+    horizontalVelocityFloat: Horizontal
     groundBool: isGrounded
     jumpBool: isJumping
   physics:
@@ -3404,6 +3405,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007305436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2007305430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846d7b54d72b30040bccfe38b902cca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Horizontal: 0
+  Vertical: 0
+  input:
+    verticalAxis: Vertical
+    horizontalAxis: Horizontal
+    jumpButton: Jump
+  moveSpeed: 3
+  other:
+    lookSpeed: 5
+    lookDistance: 10
+    requireInputForTurn: 1
 --- !u!1 &2020290357
 GameObject:
   m_ObjectHideFlags: 0

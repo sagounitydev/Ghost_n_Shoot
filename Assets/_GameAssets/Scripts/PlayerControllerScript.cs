@@ -9,17 +9,16 @@ public class PlayerControllerScript : MonoBehaviour {
 
     Animator animator;
     private CharacterController characterController;
-    /*public float MovX;
-    public float MovY;*/
+
     private Rigidbody rb;
 
-    [SerializeField] float moveSpeed = 3;
-    
+    [SerializeField] float moveSpeed = 3f;
+
     [System.Serializable]
     public class AnimationSettings
     {
-        public string verticalVelocityFloat = "MovY";
-        public string horizontalVelocityFloat = "MovX";
+        public string verticalVelocityFloat = "Forward";
+        public string horizontalVelocityFloat = "Strafe";
         public string groundBool = "isGrounded";
         public string jumpBool = "isJumping";
     }
@@ -51,6 +50,7 @@ public class PlayerControllerScript : MonoBehaviour {
     bool jumping;
     bool resetGravity;
     float gravity;
+    bool isGrounded = true;
 
     private void Start()
     {
@@ -63,29 +63,25 @@ public class PlayerControllerScript : MonoBehaviour {
     private void Update()
     {
         ApplyGravity();
-        Animate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
+        isGrounded = characterController.isGrounded;
+
         float translation = Input.GetAxis("Vertical") * moveSpeed;
         float rotation = Input.GetAxis("Horizontal") * moveSpeed;
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
-        transform.Translate(rotation, 0, translation);        
-               
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
-     }
+        transform.Translate(rotation, 0, translation);
+    }
 
     private void FixedUpdate()
     {
         rb.MovePosition(transform.position + transform.forward * moveSpeed * Time.deltaTime);
     }
 
-    public void Animate(float MovY, float MovX)
+    public void Animate(float forward, float strafe)
     {
-        animator.SetFloat(animations.verticalVelocityFloat, MovY);
-        animator.SetFloat(animations.horizontalVelocityFloat, MovX);
-        animator.SetBool(animations.groundBool, characterController.isGrounded);
+        animator.SetFloat(animations.verticalVelocityFloat, forward);
+        animator.SetFloat(animations.horizontalVelocityFloat, strafe);
+        animator.SetBool(animations.groundBool, isGrounded);
         animator.SetBool(animations.jumpBool, jumping);
     }
 
@@ -94,7 +90,7 @@ public class PlayerControllerScript : MonoBehaviour {
         if (jumping)
            return;
 
-        if (characterController.isGrounded)
+        if (isGrounded)
         {
             jumping = true;
             StartCoroutine(StopJump());

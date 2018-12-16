@@ -29,7 +29,7 @@ public class CameraRig : MonoBehaviour {
         public float minAngle = -30.0f;
         public float maxAngle = 70.0f;
         public float rotationSpeed = 5.0f;
-        public float maxCheckDist = .1f;
+        public float maxCheckDist = 0.1f;
 
         [Header("-Zoom-")]
         public float fieldOfView = 70.0f;
@@ -37,7 +37,7 @@ public class CameraRig : MonoBehaviour {
         public float zoomSpeed = 3.0f;
 
         [Header("-Visual Options-")]
-        public float hidMeshWhenDistance = 0.5f;
+        public float hideMeshWhenDistance = 0.5f;
     }
 
     [SerializeField]
@@ -174,7 +174,7 @@ public class CameraRig : MonoBehaviour {
 
         float dist = Mathf.Abs(shoulder == Shoulder.Left ? cameraSettings.camPositionOffsetLeft.z : cameraSettings.camPositionOffsetRight.z);
 
-        if(Physics.SphereCast(start, mainCamera.nearClipPlane, dir, out hit, dist, wallLayers))
+        if(Physics.SphereCast(start, cameraSettings.maxCheckDist, dir, out hit, dist, wallLayers))
         {
             MoveCamUp(hit, pivotPos, dir, mainCamT);
         }
@@ -218,14 +218,14 @@ public class CameraRig : MonoBehaviour {
         SkinnedMeshRenderer[] meshes = target.GetComponentsInChildren<SkinnedMeshRenderer>();
         Transform mainCamT = mainCamera.transform;
         Vector3 mainCamPos = mainCamT.position;
-        Vector2 targetPos = target.position;
-        float dist = Vector3.Distance(mainCamPos, targetPos);
+        Vector3 targetPos = target.position;
+        float dist = Vector3.Distance(mainCamPos, (targetPos + target.up));
 
         if(meshes.Length > 0)
         {
             for(int i = 0; i < meshes.Length; i++)
             {
-                if(dist <= cameraSettings.hidMeshWhenDistance)
+                if(dist <= cameraSettings.hideMeshWhenDistance)
                 {
                     meshes[i].enabled = false;
                 }
