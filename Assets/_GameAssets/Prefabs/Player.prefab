@@ -631,6 +631,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1587294225278408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4850129376666154}
+  - component: {fileID: 65419779221568484}
+  m_Layer: 8
+  m_Name: HitArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1589052959983394
 GameObject:
   m_ObjectHideFlags: 1
@@ -765,7 +781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056931663530332}
   m_Layer: 0
-  m_Name: genBala
+  m_Name: genCasquillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -996,6 +1012,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1882019789876840
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4999738316990404}
+  m_Layer: 0
+  m_Name: genBala
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1901103001127588
 GameObject:
   m_ObjectHideFlags: 1
@@ -1163,13 +1194,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1712539835120714}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.002, y: 0.138, z: 0.502}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
+  m_LocalPosition: {x: 0.024, y: 0.158, z: 0.107}
+  m_LocalScale: {x: 1.000001, y: 0.9999994, z: 1.000005}
   m_Children: []
   m_Father: {fileID: 4250653677759372}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
 --- !u!4 &4063383919233060
 Transform:
   m_ObjectHideFlags: 1
@@ -1371,17 +1402,18 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1935761949990394}
-  m_LocalRotation: {x: 0.49818814, y: 0.54116845, z: 0.5321129, w: 0.41928658}
-  m_LocalPosition: {x: 0.027, y: -0.019, z: -0.138}
+  m_LocalRotation: {x: 0.47852758, y: 0.5446168, z: 0.55238354, w: 0.4114321}
+  m_LocalPosition: {x: -0.06, y: -0.04, z: -0.138}
   m_LocalScale: {x: 1.8000019, y: 1.800002, z: 1.8000046}
   m_Children:
   - {fileID: 4552046190735978}
   - {fileID: 4440611847751816}
   - {fileID: 4012993985840386}
+  - {fileID: 4999738316990404}
   - {fileID: 4056931663530332}
   m_Father: {fileID: 4070864946267030}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 189.1, y: -85.23, z: -86.36099}
+  m_LocalEulerAnglesHint: {x: 192, y: -87, z: -86}
 --- !u!4 &4251880992136444
 Transform:
   m_ObjectHideFlags: 1
@@ -1464,6 +1496,7 @@ Transform:
   m_Children:
   - {fileID: 4901760286205726}
   - {fileID: 4474892719035404}
+  - {fileID: 4850129376666154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1942,6 +1975,19 @@ Transform:
   m_Father: {fileID: 4886719896693402}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4850129376666154
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587294225278408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4338511221114090}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4857394821385610
 Transform:
   m_ObjectHideFlags: 1
@@ -2004,7 +2050,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804566800374124}
-  m_LocalRotation: {x: -0.053165004, y: 0.061297946, z: -0.021098167, w: 0.99647933}
+  m_LocalRotation: {x: -0.052357398, y: 0.024870515, z: -0.023028087, w: 0.9980531}
   m_LocalPosition: {x: -0.07383335, y: 1.0527477, z: 0.014978409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2013,7 +2059,7 @@ Transform:
   - {fileID: 4758315255344916}
   m_Father: {fileID: 4338511221114090}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.933, y: 3, z: -2.799}
 --- !u!4 &4909708968932368
 Transform:
   m_ObjectHideFlags: 1
@@ -2109,6 +2155,19 @@ Transform:
   - {fileID: 4909708968932368}
   m_Father: {fileID: 4269339983010766}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4999738316990404
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882019789876840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.002, y: 0.138, z: 0.502}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4250653677759372}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23316557699865540
 MeshRenderer:
@@ -2244,10 +2303,22 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65419779221568484
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587294225278408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5035043, y: 1.3192883, z: 0.49952984}
+  m_Center: {x: -0.07779026, y: 1.2978868, z: 0.041156948}
 --- !u!95 &95625467156829200
 Animator:
   serializedVersion: 3
@@ -2295,7 +2366,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e17d59ba39f5e4fb1b85735a379462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
+  vidas: 0
+  txtPuntuacion: {fileID: 0}
+  uiScript: {fileID: 0}
+  puntos: 0
   animations:
     verticalVelocityFloat: Forward
     horizontalVelocityFloat: Strafe

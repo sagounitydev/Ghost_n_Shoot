@@ -12,7 +12,18 @@ public class PlayerControllerScript : MonoBehaviour {
 
     private Rigidbody rb;
 
-    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float moveSpeed = 4f;
+
+    //UI
+    int vidasMaximas = 4;
+    [SerializeField] int vidas;
+    [SerializeField] Text txtPuntuacion;
+    [SerializeField] GUIScript uiScript;
+    [SerializeField] public static int salud = 100;
+    [SerializeField] public static int saludMaxima = 100;
+
+    [SerializeField] int puntos = 0;
+    //FIN UI
 
     [System.Serializable]
     public class AnimationSettings
@@ -21,6 +32,7 @@ public class PlayerControllerScript : MonoBehaviour {
         public string horizontalVelocityFloat = "Strafe";
         public string groundBool = "isGrounded";
         public string jumpBool = "isJumping";
+        //public string disparoBool = "disparando";
     }
 
     [SerializeField]
@@ -51,9 +63,22 @@ public class PlayerControllerScript : MonoBehaviour {
     bool resetGravity;
     float gravity;
     bool isGrounded = true;
+    //bool disparando;
+
+    //UI
+    private void Awake() {
+        vidas = vidasMaximas;
+        salud = saludMaxima;
+     }
+
+    public int GetVidas() {
+        return this.vidas;
+    }
+    //FIN UI
 
     private void Start()
     {
+        txtPuntuacion.text = "Score: " + puntos.ToString();
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         SetupAnimator();
@@ -63,17 +88,16 @@ public class PlayerControllerScript : MonoBehaviour {
     private void Update()
     {
         ApplyGravity();
-        isGrounded = characterController.isGrounded;
+        isGrounded = characterController.isGrounded;        
+    }
 
+    private void FixedUpdate()
+    {
         float translation = Input.GetAxis("Vertical") * moveSpeed;
         float rotation = Input.GetAxis("Horizontal") * moveSpeed;
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
         transform.Translate(rotation, 0, translation);
-    }
-
-    private void FixedUpdate()
-    {
         rb.MovePosition(transform.position + transform.forward * moveSpeed * Time.deltaTime);
     }
 
@@ -83,7 +107,14 @@ public class PlayerControllerScript : MonoBehaviour {
         animator.SetFloat(animations.horizontalVelocityFloat, strafe);
         animator.SetBool(animations.groundBool, isGrounded);
         animator.SetBool(animations.jumpBool, jumping);
+        //animator.SetBool(animations.disparoBool, disparando);
     }
+
+    /*public void disparo() {
+        if (isGrounded) {
+            disparando = true;
+        }
+    }*/
 
     public void Jump()
     {
@@ -96,6 +127,19 @@ public class PlayerControllerScript : MonoBehaviour {
             StartCoroutine(StopJump());
         }        
     }
+
+    //RECIBIR DAÑO
+ public void RecibirDanyo(int danyo) {
+        salud = salud - danyo;
+        if (salud <= 0) {
+            vidas--;
+            uiScript.RestarVida();
+            salud = saludMaxima;
+        }
+
+        //txtSalud.text = "Health:" + salud.ToString();
+    }
+    //FIN RECIBIR DAÑO
 
     IEnumerator StopJump()
     {

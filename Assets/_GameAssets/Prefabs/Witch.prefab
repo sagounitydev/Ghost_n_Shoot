@@ -500,6 +500,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4210558781017846}
   - component: {fileID: 95531187567146852}
+  - component: {fileID: 54428927908114922}
+  - component: {fileID: 136205508319589838}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Enemy
@@ -1216,8 +1218,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418323858303698}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.079911, y: 0.010731757, z: 3.5792327}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -13.69514, y: -0.87693787, z: 8.825827}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4505034389534362}
@@ -1975,6 +1977,21 @@ Transform:
   m_Father: {fileID: 4256379845553332}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54428927908114922
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418323858303698}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!95 &95531187567146852
 Animator:
   serializedVersion: 3
@@ -1992,6 +2009,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!136 &136205508319589838
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418323858303698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.30294508
+  m_Height: 2.0118222
+  m_Direction: 1
+  m_Center: {x: 0.012763443, y: 1.2214954, z: -0.019721236}
 --- !u!137 &137258256730458914
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

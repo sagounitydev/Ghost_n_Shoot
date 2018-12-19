@@ -8,6 +8,12 @@ public class ZombieScript : MonoBehaviour {
     Transform zombie;
     NavMeshAgent nav;
 
+    [SerializeField] float hacerDanyo = 15f;
+    float damageValue;
+
+    int suVida = 30;
+    int suDanyo = 15;
+
     private Animator anim;
 
 	void Start () {
@@ -26,6 +32,31 @@ public class ZombieScript : MonoBehaviour {
     {
         bool aPorEl = false;
         anim.SetBool("corriendo", aPorEl);
-
     }
+    
+    private void estasMuerto() {
+        bool unoMenos = true;
+        anim.SetBool("muerto", unoMenos);
+        Destroy(this.gameObject, 4f);
+    }
+
+    public float HacerDanyo() {
+        suVida -= suDanyo;
+        return damageValue = 15.0f;
+    }
+
+    /*
+    private void danyo()
+    {
+        bool queDanyo = true;
+        anim.SetBool("herido", queDanyo);
+    }
+
+    private void estasMuerto()
+    {
+        bool unoMenos = true;
+        anim.SetBool("muerto", unoMenos);
+        Destroy(this.gameObject, 4f);
+    }
+    */
 }

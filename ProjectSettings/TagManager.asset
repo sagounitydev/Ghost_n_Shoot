@@ -9,6 +9,12 @@ TagManager:
   - Enemy
   - FxTemporaire
   - CambiaMusica
+  - Tank
+  - Projectile
+  - Effect
+  - ZonaPecho
+  - ZonaCabeza
+  - Bala
   layers:
   - Default
   - TransparentFX

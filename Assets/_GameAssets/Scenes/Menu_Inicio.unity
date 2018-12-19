@@ -18147,7 +18147,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 82878159082245222, guid: 608cca11946b80e45a6590885f20c52b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 82878159082245222, guid: 608cca11946b80e45a6590885f20c52b, type: 2}
+    - {fileID: 82850755028624996, guid: 608cca11946b80e45a6590885f20c52b, type: 2}
+    - {fileID: 82324855610262822, guid: 608cca11946b80e45a6590885f20c52b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 608cca11946b80e45a6590885f20c52b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1665289615
