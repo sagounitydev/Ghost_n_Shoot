@@ -31,7 +31,7 @@ public class GUIScript : MonoBehaviour {
     
     private void OnTriggerEnter(Collider col) {
         if (col.CompareTag("Enemy")) {
-            restaEnergia -= col.GetComponent<ZombieScript>().HacerDanyo();
+            //restaEnergia -= col.GetComponent<ZombieScript>().hacerDanyo();
         }
     }
 

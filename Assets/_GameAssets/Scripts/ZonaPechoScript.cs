@@ -16,7 +16,7 @@ public class ZonaPechoScript : MonoBehaviour {
 
     void OnTriggerEnter (Collider other) {
         if(other.gameObject.CompareTag ("Bala")) {
-            animZombie.SetBool("herido", true);
+            animZombie.SetTrigger("herido");
             print("ME HAS DADO");
 
         }

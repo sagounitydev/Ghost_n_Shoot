@@ -7,8 +7,20 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerScript : MonoBehaviour {
 
+    public int startingHealth = 100;
+    public int currentHealth;
+    public Slider healthSlider;
+    public Image damageImage;
+    public AudioClip deathClip;
+    public float flashSpeed = 5f;
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+
     Animator animator;
     private CharacterController characterController;
+    AudioSource playerAudio;
+    //PlayerShooting playerShooting;
+    bool isDead;
+    bool damaged;
 
     private Rigidbody rb;
 
@@ -17,10 +29,10 @@ public class PlayerControllerScript : MonoBehaviour {
     //UI
     int vidasMaximas = 4;
     [SerializeField] int vidas;
-    [SerializeField] Text txtPuntuacion;
+    [SerializeField] Text Score;
     [SerializeField] GUIScript uiScript;
-    [SerializeField] public static int salud = 100;
-    [SerializeField] public static int saludMaxima = 100;
+    //[SerializeField] public static int salud = 100;
+    //[SerializeField] public static int saludMaxima = 100;
 
     [SerializeField] int puntos = 0;
     //FIN UI
@@ -67,8 +79,14 @@ public class PlayerControllerScript : MonoBehaviour {
 
     //UI
     private void Awake() {
-        vidas = vidasMaximas;
-        salud = saludMaxima;
+        animator = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
+        characterController = GetComponent<CharacterController>();
+        playerShooting = GetComponentInChildren<PlayerShooting>();
+        currentHealth = startingHealth;
+
+        /*vidas = vidasMaximas;
+        salud = saludMaxima;*/ 
      }
 
     public int GetVidas() {
@@ -78,9 +96,7 @@ public class PlayerControllerScript : MonoBehaviour {
 
     private void Start()
     {
-        txtPuntuacion.text = "Score: " + puntos.ToString();
-        animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
+        Score.text = "Score: " + puntos.ToString();        
         SetupAnimator();
         rb = GetComponent<Rigidbody>();
     }
@@ -88,8 +104,55 @@ public class PlayerControllerScript : MonoBehaviour {
     private void Update()
     {
         ApplyGravity();
-        isGrounded = characterController.isGrounded;        
+        isGrounded = characterController.isGrounded;
+
+        if (damaged)
+        {
+            damageImage.color = flashColour;
+        }
+        else
+        {
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+
+        damaged = false;
     }
+
+    public void TakeDamage (int amount)
+    {
+        damaged = true;
+
+        currentHealth -= amount;
+
+        healthSlider.value = currentHealth;
+
+        animator.SetTrigger("PlayerHerido");
+
+        playerAudio.Play();
+
+        if(currentHealth <= 0 && !isDead)
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        isDead = true;
+
+        //playerShooting.DisableEffects();
+
+        animator.SetTrigger("PlayerMuerto");
+
+        playerAudio.clip = deathClip;
+
+        playerAudio.Play();
+
+        characterController.enabled = false;
+        //playerShooting.enabled = false;
+    }
+
+
 
     private void FixedUpdate()
     {
@@ -107,14 +170,7 @@ public class PlayerControllerScript : MonoBehaviour {
         animator.SetFloat(animations.horizontalVelocityFloat, strafe);
         animator.SetBool(animations.groundBool, isGrounded);
         animator.SetBool(animations.jumpBool, jumping);
-        //animator.SetBool(animations.disparoBool, disparando);
     }
-
-    /*public void disparo() {
-        if (isGrounded) {
-            disparando = true;
-        }
-    }*/
 
     public void Jump()
     {
@@ -127,19 +183,6 @@ public class PlayerControllerScript : MonoBehaviour {
             StartCoroutine(StopJump());
         }        
     }
-
-    //RECIBIR DAÑO
- public void RecibirDanyo(int danyo) {
-        salud = salud - danyo;
-        if (salud <= 0) {
-            vidas--;
-            uiScript.RestarVida();
-            salud = saludMaxima;
-        }
-
-        //txtSalud.text = "Health:" + salud.ToString();
-    }
-    //FIN RECIBIR DAÑO
 
     IEnumerator StopJump()
     {

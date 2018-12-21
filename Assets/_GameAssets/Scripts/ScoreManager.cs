@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour {
 
-    public static int puntos;
+    public static int Score;
 
     PlayerControllerScript text;
 
     private void Awake()
     {
         text = GetComponent<PlayerControllerScript>();
-        puntos = 0;
+        Score = 0;
     }
 
     private void Update()
     {
-        //text.puntos = "Score: " + puntos;
+       //text.Score = "Score: " + Score;
     }
 }

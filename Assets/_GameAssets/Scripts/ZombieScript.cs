@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class ZombieScript : MonoBehaviour {
 
     Transform zombie;
+    PlayerControllerScript playerHealth;
+    EnemyHealth enemyHealth;
     NavMeshAgent nav;
 
-    [SerializeField] float hacerDanyo = 15f;
     float damageValue;
 
     int suVida = 30;
@@ -16,47 +17,32 @@ public class ZombieScript : MonoBehaviour {
 
     private Animator anim;
 
-	void Start () {
+    private void Awake() {
         zombie = GameObject.FindGameObjectWithTag("Player").transform;
+        playerHealth = zombie.GetComponent<PlayerControllerScript>();
+        enemyHealth = GetComponent<EnemyHealth>();
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         bool aPorEl = true;
         anim.SetBool("corriendo", aPorEl);
         nav.SetDestination(zombie.position);
     }
+
     private void OnTriggerExit(Collider other)
     {
         bool aPorEl = false;
         anim.SetBool("corriendo", aPorEl);
     }
-    
-    private void estasMuerto() {
-        bool unoMenos = true;
-        anim.SetBool("muerto", unoMenos);
-        Destroy(this.gameObject, 4f);
-    }
 
-    public float HacerDanyo() {
-        suVida -= suDanyo;
-        return damageValue = 15.0f;
+    private void Update() {
+        if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0) {
+            nav.SetDestination(zombie.position);
+        } else {
+            nav.enabled = false;
+        }
     }
-
-    /*
-    private void danyo()
-    {
-        bool queDanyo = true;
-        anim.SetBool("herido", queDanyo);
-    }
-
-    private void estasMuerto()
-    {
-        bool unoMenos = true;
-        anim.SetBool("muerto", unoMenos);
-        Destroy(this.gameObject, 4f);
-    }
-    */
 }
