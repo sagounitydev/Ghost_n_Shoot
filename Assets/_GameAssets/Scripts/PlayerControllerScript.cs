@@ -82,7 +82,7 @@ public class PlayerControllerScript : MonoBehaviour {
         animator = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         characterController = GetComponent<CharacterController>();
-        playerShooting = GetComponentInChildren<PlayerShooting>();
+        //playerShooting = GetComponentInChildren<PlayerShooting>();
         currentHealth = startingHealth;
 
         /*vidas = vidasMaximas;

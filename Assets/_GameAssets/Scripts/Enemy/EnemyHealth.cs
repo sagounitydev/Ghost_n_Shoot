@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour {
     public float sinSpeed = 2.5f;
     public int scoreValue = 10;
     public AudioClip deathClip;
+    [SerializeField] ParticleSystem psSangre;
 
     Animator anim;
     AudioSource enemyAudio;
@@ -35,10 +36,12 @@ public class EnemyHealth : MonoBehaviour {
 
         anim.SetTrigger("herido");
 
-        hitParticles.transform.position = hitPoint;
-        hitParticles.Play();
+        //HAY QUE CORREGIRLO
+        //hitParticles.transform.position = hitPoint;
+        //hitParticles.Play();
+        //
 
-        if(currentHealth <= 0) {
+        if (currentHealth <= 0) {
             Death();
         }
     }
